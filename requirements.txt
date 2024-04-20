@@ -1,0 +1,7 @@
+flask
+python-dotenv
+openai
+flask_openapi3
+pydantic
+flask-cors
+pymongo
