@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+
+  unittests:
+    build:
+      context: .
+      dockerfile: Dockerfile.tests
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+    env_file:
+      - .env
+    depends_on:
+      - mongo
